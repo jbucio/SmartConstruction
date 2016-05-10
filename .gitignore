@@ -1,0 +1,8 @@
+
+# Compiled source #
+target/
+
+# IDE Configuration #
+.classpath
+.project
+.settings
