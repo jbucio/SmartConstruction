@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-feb-2016 12:36:05 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="mx.tiid.smartconstruction.model.Codigos" table="codigos" catalog="smart_construction">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="tabla" type="string">
+            <column name="Tabla" length="45" />
+        </property>
+        <property name="longitud" type="java.lang.Integer">
+            <column name="Longitud" />
+        </property>
+        <property name="prefijo" type="string">
+            <column name="Prefijo" length="45" />
+        </property>
+        <property name="sufijo" type="string">
+            <column name="Sufijo" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/jdbc 
+    http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="mx.tiid" />
+
+	<!-- Hibernate TransactionManager -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- DataSource -->
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/smart_construction?autoReconnect=true" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingLocations">
+			<list>
+				<value> classpath:mx/tiid/smartconstruction/model/Sesiones.hbm.xml
+				</value>
+				<value>
+					classpath:mx/tiid/smartconstruction/model/FactoresIncumplimiento.hbm.xml
+				</value>
+				<value>
+					classpath:mx/tiid/smartconstruction/model/Comentarios.hbm.xml
+				</value>
+				<value> classpath:mx/tiid/smartconstruction/model/Usuarios.hbm.xml
+				</value>
+				<value>
+					classpath:mx/tiid/smartconstruction/model/Actividades.hbm.xml
+				</value>
+				<value> classpath:mx/tiid/smartconstruction/model/Project.hbm.xml
+				</value>
+				<value> classpath:mx/tiid/smartconstruction/model/Reportes.hbm.xml
+				</value>
+				<value> classpath:mx/tiid/smartconstruction/model/Codigos.hbm.xml
+				</value>
+				<value> classpath:mx/tiid/smartconstruction/model/Partida.hbm.xml
+				</value>
+				<value>
+					classpath:mx/tiid/smartconstruction/model/UsuariosProyectos.hbm.xml
+				</value>
+				<value> classpath:mx/tiid/smartconstruction/model/Empresas.hbm.xml
+				</value>
+				<value> classpath:mx/tiid/smartconstruction/model/Losas.hbm.xml
+				</value>
+				<value>
+					classpath:mx/tiid/smartconstruction/model/RolUsuarios.hbm.xml
+				</value>
+				<value> classpath:mx/tiid/smartconstruction/model/Proyectos.hbm.xml
+				</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Mail configuration -->
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="juan.bucio@badak.mx" />
+		<property name="password" value="bumj8905" />
+
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+
+
+</beans>

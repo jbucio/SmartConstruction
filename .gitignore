@@ -6,3 +6,4 @@ target/
 .classpath
 .project
 .settings
+.faces-config.xml.jsfdia

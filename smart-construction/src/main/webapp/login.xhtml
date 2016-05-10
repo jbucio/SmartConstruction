@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+
+	<style type="text/css">
+html {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 90%;
+	background: url(img/obra-civil.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all,
+	.ui-inputfield.ui-password.ui-widget.ui-state-default.ui-corner-all {
+	width: 300px;
+	background-color: #151515;
+	opacity: 0.8;
+	padding: 8px 4px 8px 10px;
+	margin-bottom: 15px;
+	color: white;
+}
+
+.main {
+	float: left;
+	margin-left: 100px;
+	margin-top: 50px;
+}
+
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only
+	{
+	width: 300px;
+	background-color: #ffffff;
+	opacity: 0.8;
+	padding: 8px 4px 8px 10px;
+	margin-bottom: 15px;
+}
+</style>
+</h:head>
+<h:body>
+
+	<h:form id="form">
+		<p:growl id="msgs" showDetail="true" autoUpdate="true" closable="true"
+			life="1500" />
+
+
+		<section class="main">
+			<p>
+				<img src="smartconstruction-1.0/faces/img/marhnos.jpg"
+					style="width: 200px; height: 200px; margin-left: 50px;" />
+			</p>
+			<p>
+				<p:focus for="usuario" />
+				<p:watermark for="usuario" value="usuario*" />
+				<p:inputText id="usuario" required="true" styleClass="prueba2"
+					requiredMessage="Nombre Requerido"
+					value="#{usuarioBean.usuario.usuario}">
+				</p:inputText>
+			</p>
+			<p>
+				<p:watermark for="password" value="password*" />
+				<p:password id="password" required="true"
+					requiredMessage="Password Requerido"
+					value="#{usuarioBean.usuario.password}">
+				</p:password>
+			</p>
+			<p>
+				<p:commandButton value="Ingresar" update="msgs"
+					action="#{usuarioBean.inciarSession}" />
+			</p>
+		</section>
+
+
+	</h:form>
+</h:body>
+</html>

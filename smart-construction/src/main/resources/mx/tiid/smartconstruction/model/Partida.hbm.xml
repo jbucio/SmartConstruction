@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-feb-2016 12:36:05 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="mx.tiid.smartconstruction.model.Partida" table="partida" catalog="smart_construction">
+        <id name="idPartida" type="string">
+            <column name="IdPartida" length="45" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="reportes" class="mx.tiid.smartconstruction.model.Reportes" fetch="select">
+            <column name="IdReporte" length="45" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" />
+        </property>
+        <set name="losases" table="losas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdPartida" length="45" not-null="true" />
+            </key>
+            <one-to-many class="mx.tiid.smartconstruction.model.Losas" />
+        </set>
+    </class>
+</hibernate-mapping>

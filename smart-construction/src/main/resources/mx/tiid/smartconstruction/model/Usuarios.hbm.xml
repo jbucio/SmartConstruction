@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-feb-2016 12:36:05 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="mx.tiid.smartconstruction.model.Usuarios" table="usuarios" catalog="smart_construction">
+        <id name="idUsuario" type="string">
+            <column name="IdUsuario" length="45" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="rolUsuarios" class="mx.tiid.smartconstruction.model.RolUsuarios" fetch="select">
+            <column name="IdRol" length="45" not-null="true" />
+        </many-to-one>
+        <property name="nombres" type="string">
+            <column name="Nombres" length="45" />
+        </property>
+        <property name="apaterno" type="string">
+            <column name="APaterno" length="45" />
+        </property>
+        <property name="amaterno" type="string">
+            <column name="AMaterno" length="45" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="45" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="Usuario" length="45" />
+        </property>
+        <property name="activo" type="java.lang.Boolean">
+            <column name="Activo" />
+        </property>
+        <set name="actividadeses" table="actividades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdUsuario" length="45" not-null="true" />
+            </key>
+            <one-to-many class="mx.tiid.smartconstruction.model.Actividades" />
+        </set>
+        <set name="usuariosProyectoses" table="usuarios_proyectos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdUsuario" length="45" not-null="true" />
+            </key>
+            <one-to-many class="mx.tiid.smartconstruction.model.UsuariosProyectos" />
+        </set>
+        <set name="sesioneses" table="sesiones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdUsuario" length="45" not-null="true" />
+            </key>
+            <one-to-many class="mx.tiid.smartconstruction.model.Sesiones" />
+        </set>
+        <set name="comentarioses" table="comentarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdUsuario" length="45" not-null="true" />
+            </key>
+            <one-to-many class="mx.tiid.smartconstruction.model.Comentarios" />
+        </set>
+    </class>
+</hibernate-mapping>

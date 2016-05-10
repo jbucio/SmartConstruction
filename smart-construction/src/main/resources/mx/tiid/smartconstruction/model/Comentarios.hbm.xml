@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-feb-2016 12:36:05 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="mx.tiid.smartconstruction.model.Comentarios" table="comentarios" catalog="smart_construction">
+        <id name="idComentario" type="java.lang.Integer">
+            <column name="IdComentario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuarios" class="mx.tiid.smartconstruction.model.Usuarios" fetch="select">
+            <column name="IdUsuario" length="45" not-null="true" />
+        </many-to-one>
+        <property name="comentario" type="string">
+            <column name="Comentario" />
+        </property>
+    </class>
+</hibernate-mapping>

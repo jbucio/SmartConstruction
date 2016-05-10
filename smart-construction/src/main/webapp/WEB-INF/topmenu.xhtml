@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<script type="text/javascript">
+		PrimeFaces.locales['es'] = {
+			closeText : 'Cerrar',
+			prevText : 'Anterior',
+			nextText : 'Siguiente',
+			monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
+					'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
+					'Noviembre', 'Diciembre' ],
+			monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+					'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+			dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves',
+					'Viernes', 'Sábado' ],
+			dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ],
+			dayNamesMin : [ 'D', 'L', 'M', 'X', 'J', 'V', 'S' ],
+			weekHeader : 'Semana',
+			firstDay : 1,
+			isRTL : false,
+			showMonthAfterYear : false,
+			yearSuffix : '',
+			timeOnlyTitle : 'Sólo hora',
+			timeText : 'Tiempo',
+			hourText : 'Hora',
+			minuteText : 'Minuto',
+			secondText : 'Segundo',
+			currentText : 'Fecha actual',
+			ampm : false,
+			month : 'Mes',
+			week : 'Semana',
+			day : 'Día',
+			allDayText : 'Todo el día'
+		};
+	</script>
+	<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 80%;
+}
+
+.value {
+	width: 1200px;
+	height: 470px;
+	top: 0;
+}
+
+a:link {
+	text-decoration: none;
+}
+</style>
+
+</h:head>
+<h:body>
+	<h:form id="form">
+
+
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">
+
+					<div class="ui-grid ui-grid-responsive">
+						<div class="ui-grid-row">
+
+							<div class="ui-grid-col-2">
+							<p:outputLabel value="BIENVENIDO: #{sessionBean.usuario.nombres}"/>
+							</div>
+							<div class="ui-grid-col-2"></div>
+							<div class="ui-grid-col-2"></div>
+							<div class="ui-grid-col-2"></div>
+							<div class="ui-grid-col-2"></div>
+
+
+							<div class="ui-grid-col-2" align="right">
+								<p:commandButton type="button" title="Comentario"
+									icon="ui-icon-comment" onclick="PF('dlgComentario').show();" />
+								<p:commandButton action="../conf/user.xhtml"
+									icon="ui-icon-wrench" title="Configuración">
+								</p:commandButton>
+								<p:commandButton action="#{usuarioBean.cerrarSession}"
+									icon="ui-icon-power" title="Logout">
+								</p:commandButton>
+
+
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</h:form>
+</h:body>
+</html>
+
