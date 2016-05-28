@@ -21,15 +21,11 @@ public class ActividadDAOImpl implements IActividadeDAO {
 
 	@Override
 	public List<Actividades> actividadesByUsuario(Usuarios usuario) {
-		// String sql = "select distinct a from Project p join fetch
-		// p.actividadeses a on p.idProject = a.idProject where
-		// a.usuarios.idUsuario = :usuario and p.actividad = :actividad";
+
 		List<Actividades> listActividades = null;
-		
-//		String sql = "select distinct a from Project p join fetch p.actividadeses a";
-		
+
 		String sql = "select distinct a from Project p inner join p.actividadeses a where a.usuarios.idUsuario = :usuario and p.actividad = :actividad";
-		
+
 		try {
 			Query query = sessionFactory.openSession().createQuery(sql);
 			query.setParameter("usuario", "US001");
