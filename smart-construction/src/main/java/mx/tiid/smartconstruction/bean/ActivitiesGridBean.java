@@ -14,7 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import mx.tiid.smartconstruction.model.Actividades;
 
-@ManagedBean(name = "dtBasicView")
+@ManagedBean
 @ViewScoped
 public class ActivitiesGridBean implements Serializable {
 

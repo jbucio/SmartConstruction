@@ -14,7 +14,7 @@
 </h:head>
 <h:body>
 	<h:form id="formActividadesGrid">
-		<p:dataTable var="act" value="#{dtBasicView.listarActividades}">
+		<p:dataTable var="act" value="#{activitiesGridBean.listarActividades}">
 			<p:column headerText="Id">
 				<h:outputText value="#{act.idActividad}" />
 			</p:column>
