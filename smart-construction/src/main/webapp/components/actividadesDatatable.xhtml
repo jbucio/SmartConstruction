@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<h:head>
+
+</h:head>
+<h:body>
+	
+	<h:form id="formActividadesCatalogo">
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-5"></div>
+				<div class="ui-grid-col-3">
+					<h:outputText value="Actividades"></h:outputText>
+				</div>
+				<div class="ui-grid-col-4"></div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-10"></div>
+				<div class="ui-grid-col-2">
+					<p:commandButton id="agregarActividad" icon="ui-icon-plus"
+						value="Agregar" onclick="PF('eventDialog').show()"></p:commandButton>
+				</div>
+			</div>
+			<br />
+		</div>
+		<p:dataTable var="actCat"
+			value="#{actividadesCatalogoBean.listarActividades}">
+			<p:column headerText="Id">
+				<h:outputText value="#{actCat.idActividad}" />
+			</p:column>
+
+			<p:column headerText="Empresa">
+				<h:outputText value="#{actCat.empresas}"></h:outputText>
+			</p:column>
+
+
+			<p:column headerText="Proyecto">
+				<h:outputText value="#{actCat.project}" />
+			</p:column>
+
+			<p:column headerText="Factores De Incumplimiento">
+				<h:outputText value="#{actCat.factoresIncumplimiento}" />
+			</p:column>
+
+			<p:column headerText="Fecha Asignada">
+				<h:outputText value="#{actCat.fechaAsignada}" />
+			</p:column>
+
+			<p:column headerText="Fecha Comienzo">
+				<h:outputText value="#{actCat.fechaComienzo}" />
+			</p:column>
+
+			<p:column headerText="Fecha Termino">
+				<h:outputText value="#{actCat.fechaTermino}" />
+			</p:column>
+
+			<p:column headerText="Fecha Actualizada">
+				<h:outputText value="#{actCat.fechaActualizada}" />
+			</p:column>
+
+			<p:column headerText="Editar">
+				<p:commandButton id="editarActividad"  icon="ui-icon-pencil" 
+					onclick="PF('eventDialog').show()"></p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+
+		<p:dialog widgetVar="eventDialog" header="Agregar Actividad"
+			showEffect="clip" hideEffect="clip" >
+			<h:panelGrid id="eventDetails" columns="2">
+
+				<h:outputLabel for="idActividad" value="Id:" />
+				<p:inputText id="idActividad" required="true" disabled="true" />
+
+				<h:outputLabel for="empresa" value="Empresa:" />
+				<p:selectOneMenu id="empresa" effect="fold" editable="true">
+					<f:selectItem itemLabel="Seleccionar Empresa" />
+					<f:selectItems />
+				</p:selectOneMenu>
+
+
+				<p:outputLabel for="proyecto" value="Proyecto" />
+				<p:selectOneMenu id="proyecto" effect="fold" editable="true">
+					<f:selectItem itemLabel="Seleccionar Proyecto" />
+					<f:selectItems />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="foctoresIncumplimiento"
+					value="Factor Incumplimiento" />
+				<p:selectOneMenu id="foctoresIncumplimiento" effect="fold"
+					editable="true">
+					<f:selectItem itemLabel="Seleccionar Factor" />
+					<f:selectItems />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="fechaAsignada" value="F. Asignada:" />
+				<p:calendar id="fechaAsignada" navigator="true" pattern="dd/MM/yyy"
+					timeZone="GMT-5" />
+
+				<p:outputLabel for="fechaComienzo" value="F. Comienzo:" />
+				<p:calendar id="fechaComienzo" navigator="true" pattern="dd/MM/yyy"
+					timeZone="GMT-5" />
+
+				<p:outputLabel for="fechaTermino" value="F. Termino:" />
+				<p:calendar id="fechaTermino" navigator="true" pattern="dd/MM/yyy"
+					timeZone="GMT-5" />
+
+				<p:outputLabel for="fechaActualizada" value="F. Actualizada:" />
+				<p:calendar id="fechaActualizada" navigator="true"
+					pattern="dd/MM/yyy" timeZone="GMT-5" />
+
+				<p:commandButton id="Guardar" type="button" value="Guardar"  />
+
+			</h:panelGrid>
+		</p:dialog>
+	</h:form>
+	
+</h:body>
+</html>
