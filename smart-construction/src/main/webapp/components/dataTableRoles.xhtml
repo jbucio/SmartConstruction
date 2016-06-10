@@ -13,6 +13,23 @@
 </h:head>
 <h:body>
 	<h:form id="formDataTableRoles">
+	<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-5"></div>
+				<div class="ui-grid-col-3">
+					<h:outputText value="Roles"></h:outputText>
+				</div>
+				<div class="ui-grid-col-4"></div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-10"></div>
+				<div class="ui-grid-col-2">
+					<p:commandButton id="agregarRoles" icon="ui-icon-plus"
+						value="Agregar" onclick="PF('eventDialog').show()"></p:commandButton>
+				</div>
+			</div>
+			<br />
+		</div>
 		<p:dataTable var="rol" value="#{rolesCaralogoBean.listarRolUsuarios}">
 			<p:column headerText="Id">
 				<h:outputText value="#{rol.idRol}" />
@@ -21,7 +38,25 @@
 			<p:column headerText="Nombre">
 				<h:outputText value="#{rol.nombre}" />
 			</p:column>
+			<p:column headerText="Editar">
+				<p:commandButton id="editarRol"  icon="ui-icon-pencil" 
+					onclick="PF('eventDialog').show()"></p:commandButton>
+			</p:column>
 		</p:dataTable>
+		<p:dialog widgetVar="eventDialog" header="Agregar Rol"
+			showEffect="clip" hideEffect="clip" >
+			<h:panelGrid id="eventDetails" columns="2">
+
+				<h:outputLabel for="id" value="Id:" />
+				<p:inputText id="id" value="" required="true" disabled="true" />
+
+				<h:outputLabel for="nombres" value="Nombres:" />
+				<p:inputText id="nombres" value="" required="true" disabled="false" />
+
+				<p:commandButton id="Guardar" type="button" value="Guardar"  />
+
+			</h:panelGrid>
+		</p:dialog>
 	</h:form>
 </h:body>
 </html>

@@ -35,6 +35,11 @@
 					</div>
 		
 					<div class="ui-grid-col-1">	
+						<ui:insert name="content">
+							<p:button outcome="usuariosCatalogo" value="Usuario" icon="ui-icon-person">
+    							<f:param name="productId" value="10" />   		
+							</p:button>
+						</ui:insert>
 					</div>
 		
 					<div class="ui-grid-col-1">
@@ -64,6 +69,9 @@
 					
 					<div class="ui-grid-col-1">	
 						<ui:insert name="content">
+							<p:button outcome="proyectosCalatolgo" value="Proyectos" icon="ui-icon-document" >
+    							<f:param name="productId" value="20" />
+							</p:button>
 						</ui:insert>
 					</div>
 					
