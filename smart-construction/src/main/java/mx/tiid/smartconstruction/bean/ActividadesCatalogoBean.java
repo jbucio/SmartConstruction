@@ -2,7 +2,6 @@ package mx.tiid.smartconstruction.bean;
 
 
 
-import java.awt.Event;
 import java.io.Serializable; 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +22,6 @@ public class ActividadesCatalogoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List<Actividades> listarActividades;
-	private Event event;
 	
 	@PostConstruct
 	public void init(){

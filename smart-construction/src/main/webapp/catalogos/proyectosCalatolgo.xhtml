@@ -12,7 +12,7 @@
 
 </h:head>
 <h:body>
-	<h:form id="formActividadesCatalogo">
+	<h:form id="formProyectosCatalogo">
 		<p:layout fullPage="true">
 
 			<!-- Cabecera -->
@@ -28,17 +28,15 @@
 					<ui:include src="../WEB-INF/menu.xhtml" />
 				</ui:insert>
 			</p:layoutUnit>
-
+			
 			<!-- DataTable, formulario -->
 			<p:layoutUnit position="center">
-				
 				<ui:insert name="content">
-					<ui:include src="../components/actividadesDatatable.xhtml" />
+					<ui:include src="../components/proyectosDatatable.xhtml" />
 				</ui:insert>
 			</p:layoutUnit>
 		</p:layout>
-
-		
 	</h:form>
 </h:body>
 </html>
+
