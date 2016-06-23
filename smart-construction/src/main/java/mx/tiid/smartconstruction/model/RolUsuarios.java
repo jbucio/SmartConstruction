@@ -9,6 +9,11 @@ import java.util.Set;
  */
 public class RolUsuarios implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String idRol;
 	private String nombre;
 	private Set<Usuarios> usuarioses = new HashSet<Usuarios>(0);
