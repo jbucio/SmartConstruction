@@ -1,15 +1,20 @@
 package mx.tiid.smartconstruction.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.ScrollMode;
+import org.hibernate.ScrollableResults;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import mx.tiid.smartconstruction.dao.IActividadeDAO;
 import mx.tiid.smartconstruction.model.Actividades;
+import mx.tiid.smartconstruction.model.Proyectos;
 import mx.tiid.smartconstruction.model.Usuarios;
 
 @Repository
@@ -40,5 +45,16 @@ public class ActividadDAOImpl implements IActividadeDAO {
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+	
+	//Busqueda paginada
+	@Transactional(readOnly=true)
+	@Override
+	public List<Actividades> findActividades(){
+		
+		List<Actividades> listActividades = null;
+
+		
+		return listActividades;
 	}
 }

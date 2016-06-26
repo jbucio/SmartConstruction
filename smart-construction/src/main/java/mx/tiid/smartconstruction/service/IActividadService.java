@@ -11,4 +11,6 @@ import mx.tiid.smartconstruction.model.Usuarios;
 public interface IActividadService {
 
 	public List<Actividades> actividadesByUsuario(Usuarios usuario);
+	
+	public List<Actividades> getListActividades();
 }
