@@ -13,4 +13,7 @@ public interface IRolesDAO {
 	@Transactional
 	public List<RolUsuarios> findAll();
 
+	@Transactional
+	public void save(RolUsuarios rol);
+
 }

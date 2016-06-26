@@ -16,11 +16,18 @@ public class RolesDAOImpl implements IRolesDAO {
 	@Autowired
 	SessionFactory sessionFactory;
 
-//	@Transactional(readOnly = true)
+	@Transactional(readOnly = true)
 	@Override
 	public List<RolUsuarios> findAll() {
 		
 		return sessionFactory.getCurrentSession().createQuery("from RolUsuarios").list();
+	}
+
+	@Transactional
+	@Override
+	public void save(RolUsuarios rol) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().save(rol);
 	}
 
 }

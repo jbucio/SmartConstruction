@@ -13,47 +13,51 @@
 </h:head>
 <h:body>
 	<h:form id="formDataTableRoles">
-	<div class="ui-grid ui-grid-responsive">
-			<div class="ui-grid-row">
-				<div class="ui-grid-col-5"></div>
-				<div class="ui-grid-col-3">
-					<h:outputText value="Roles"></h:outputText>
-				</div>
-				<div class="ui-grid-col-4"></div>
-			</div>
-			<div class="ui-grid-row">
-				<div class="ui-grid-col-10"></div>
-				<div class="ui-grid-col-2">
-					<p:commandButton id="agregarRoles" icon="ui-icon-plus"
-						value="Agregar" onclick="PF('eventDialog').show()"></p:commandButton>
-				</div>
-			</div>
-			<br />
-		</div>
-		<p:dataTable var="rol" value="#{rolesCatalogoBean.listRolUsuarios}">
+
+		<h:outputText value="Roles"></h:outputText>
+
+
+		<p:commandButton id="agregarRoles" icon="ui-icon-plus" value="Agregar"
+			onclick="PF('eventDialog').show()" />
+
+		<br />
+		<p:dataTable id="grdRoles" var="rol"
+			value="#{rolesCatalogoBean.listRolUsuarios}">
 			<p:column headerText="Id">
 				<h:outputText value="#{rol.idRol}" />
 			</p:column>
-			
+
 			<p:column headerText="Nombre">
 				<h:outputText value="#{rol.nombre}" />
 			</p:column>
 			<p:column headerText="Editar">
-				<p:commandButton id="editarRol"  icon="ui-icon-pencil" 
+				<p:commandButton id="editarRol" icon="ui-icon-pencil"
 					onclick="PF('eventDialog').show()"></p:commandButton>
 			</p:column>
 		</p:dataTable>
+
 		<p:dialog widgetVar="eventDialog" header="Agregar Rol"
-			showEffect="clip" hideEffect="clip" >
-			<h:panelGrid id="eventDetails" columns="2">
+			showEffect="clip" hideEffect="clip">
+			<h:panelGrid id="eventDetails" columns="3">
 
 				<h:outputLabel for="id" value="Id:" />
-				<p:inputText id="id" value="" required="true" disabled="true" />
+				<p:inputText id="id" value="#{rolesCatalogoBean.rol.idRol}"
+					required="true" requiredMessage="Id requerido">
+					<p:ajax update="msgId" />
+				</p:inputText>
+				<p:message for="id" id="msgId" display="icon" />
 
-				<h:outputLabel for="nombres" value="Nombres:" />
-				<p:inputText id="nombres" value="" required="true" disabled="false" />
+				<h:outputLabel for="nombre" value="Nombre:" />
+				<p:inputText id="nombre" value="#{rolesCatalogoBean.rol.nombre}"
+					required="true" requiredMessage="Nombre requerido">
+					<p:ajax update="msgNombre" />
+				</p:inputText>
+				<p:message for="nombre" id="msgNombre" display="icon" />
 
-				<p:commandButton id="Guardar" type="button" value="Guardar"  />
+				<p:commandButton id="btnSave" process="@this"
+					actionListener="#{rolesCatalogoBean.insertRol}" value="Guardar"
+					oncomplete="if (!args.validationFailed) {PF('eventDialog').hide();}"
+					icon="ui-icon-check" update="grdRoles,id,nombre" ajax="true" />
 
 			</h:panelGrid>
 		</p:dialog>

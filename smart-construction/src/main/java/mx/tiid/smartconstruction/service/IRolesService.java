@@ -8,6 +8,9 @@ import mx.tiid.smartconstruction.model.RolUsuarios;
 
 @Component
 public interface IRolesService {
+	
 	public List<RolUsuarios> getList();
+	
+	public void insert(RolUsuarios rol);
 
 }

@@ -21,10 +21,24 @@ public class RolesCatalogoBean implements Serializable{
 	
 	private List<RolUsuarios> listarRolUsuarios;
 	
+	/*
+	 * Se crea el objeto para interactuar con la BD
+	 * Generar getter y setter
+	 * */
+	private RolUsuarios rol;
+	
 	@PostConstruct
 	public void init() {
 		
 		listarRolUsuarios();
+		//Inicializar el objeto
+		rol = new RolUsuarios();
+	}
+	
+	public void insertRol(){
+		
+		rolesServiceImpl.insert(rol);
+		init();
 	}
 	
 	private void listarRolUsuarios(){
@@ -41,6 +55,14 @@ public class RolesCatalogoBean implements Serializable{
 
 	public void setRolesServiceImpl(RolesServiceImpl rolesServiceImpl) {
 		this.rolesServiceImpl = rolesServiceImpl;
+	}
+
+	public RolUsuarios getRol() {
+		return rol;
+	}
+
+	public void setRol(RolUsuarios rol) {
+		this.rol = rol;
 	}
 	
 	
